@@ -1,0 +1,48 @@
+<!-- ═══════════════════════════════════════════════════
+     TAB: Setup
+     ═══════════════════════════════════════════════════ -->
+<div class="panel" id="panel-setup">
+  <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px;flex-wrap:wrap;gap:8px;">
+    <div>
+      <h2 style="font-size:18px;" id="setupTitle">Setup</h2>
+      <p id="setupSubtitle" style="font-size:11px;color:var(--tx2);margin-top:2px;display:none;"></p>
+    </div>
+    <button class="btn sm pri" onclick="publish()">📤 Publish to Schedule</button>
+  </div>
+
+  <p class="hint">
+    Select your month and days, then drag volunteers onto role slots in the calendar.
+    You can also click "+ evt" on any day to add a one-time event.
+  </p>
+
+  <div class="sl">
+
+    <!-- Volunteer Pool Sidebar -->
+    <div class="pool">
+      <h4>👥 Volunteers</h4>
+      <p class="pool-hint">Drag onto a role slot →</p>
+      <div id="setupPool"></div>
+    </div>
+
+    <!-- Month picker + calendar -->
+    <div>
+      <div class="card" style="margin-bottom:11px;">
+        <div class="mnav">
+          <button class="nb" onclick="chMonth(-1)">‹</button>
+          <span class="mnl" id="mLabel"></span>
+          <button class="nb" onclick="chMonth(1)">›</button>
+        </div>
+        <div class="mcal" id="miniCal"></div>
+        <div style="margin-top:8px;display:flex;gap:5px;flex-wrap:wrap;">
+          <button class="btn sm" onclick="qs(0)">All Sundays</button>
+          <button class="btn sm" onclick="qs(3)">All Wednesdays</button>
+          <button class="btn sm" onclick="qs(5)">All Fridays</button>
+          <button class="btn sm" onclick="qs(6)">All Saturdays</button>
+          <button class="btn sm dan" onclick="S.days=[];autosave();renderMiniCal()">Clear</button>
+        </div>
+      </div>
+      <div id="setupCal"></div>
+    </div>
+
+  </div>
+</div>

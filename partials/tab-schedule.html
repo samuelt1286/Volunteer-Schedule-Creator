@@ -1,0 +1,60 @@
+<!-- ═══════════════════════════════════════════════════
+     TAB: Schedule
+     ═══════════════════════════════════════════════════ -->
+<div class="panel" id="panel-schedule">
+  <div class="sh">
+    <div>
+      <h2 style="font-size:18px;" id="sTitle">Schedule</h2>
+      <p style="color:var(--tx2);font-size:11px;margin-top:2px;" id="sMeta"></p>
+    </div>
+    <div style="display:flex;gap:7px;align-items:center;flex-wrap:wrap;">
+      <div class="vtog">
+        <button class="vb on" onclick="setView('cal')">🗓 Calendar</button>
+        <button class="vb"    onclick="setView('list')">☰ List</button>
+      </div>
+      <button class="btn sm pri" onclick="publish()">↺ Re-publish</button>
+      <button class="btn sm"     onclick="printSched()">🖨 Print</button>
+      <button class="btn sm"     onclick="exportCalJpg()" title="Export calendar as 1080×1920 JPG">📷 JPG</button>
+    </div>
+  </div>
+
+  <div class="sl">
+
+    <!-- Volunteer Pool Sidebar -->
+    <div class="pool">
+      <h4>👥 Volunteers</h4>
+      <p class="pool-hint">Drag to add or reassign →</p>
+      <div id="schedPool"></div>
+    </div>
+
+    <!-- Calendar / List Content -->
+    <div style="min-width:0;">
+      <p class="hint">💡 Drag from sidebar · Drag names to move · × to remove · Click name to swap</p>
+      <div id="schedEmpty" class="empty" style="display:none;">
+        <div class="big">📋</div>
+        <p>No schedule yet.<br>Set up events &amp; volunteers, then Publish from Setup.</p>
+      </div>
+      <div id="schedContent">
+        <div id="calView"></div>
+        <div id="listView" style="display:none;"></div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- SWAP MODAL -->
+<div class="mo" id="moSwap" style="display:none;" onclick="if(event.target===this)closeMo('moSwap')">
+  <div class="mb">
+    <h3>Swap Assignment</h3>
+    <div class="msub" id="swapSub"></div>
+    <label>Role</label>
+    <select id="swapRole" style="margin-bottom:11px;" onchange="renderSwapPeople()"></select>
+    <label>Select Person</label>
+    <div id="swapPeople" style="max-height:270px;overflow-y:auto;"></div>
+    <div class="mac">
+      <button class="btn sm" onclick="closeMo('moSwap')">Cancel</button>
+      <button class="btn sm pri" onclick="applySwap()">Apply</button>
+    </div>
+  </div>
+</div>

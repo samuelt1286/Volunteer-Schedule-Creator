@@ -1,0 +1,62 @@
+<!-- ═══════════════════════════════════════════════════
+     TAB: Events
+     ═══════════════════════════════════════════════════ -->
+<div class="panel" id="panel-events">
+  <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px;flex-wrap:wrap;gap:8px;">
+    <h2 style="font-size:18px;">Events</h2>
+    <button class="btn sm pri" onclick="openEvtModal()">+ Add Event</button>
+  </div>
+  <p style="font-size:12px;color:var(--tx2);margin-bottom:12px;">
+    Events define what happens on a given day-of-week. Assign roles from your role library
+    and set how many volunteers are needed per role.
+  </p>
+  <div id="evList"></div>
+</div>
+
+<!-- EVENT MODAL -->
+<div class="mo" id="moEvt" style="display:none;" onclick="if(event.target===this)closeMo('moEvt')">
+  <div class="mb" style="max-width:500px;">
+    <h3 id="moEvtTitle">Add Event</h3>
+    <div class="msub">Set name, color, day(s) of week, and which roles are needed.</div>
+    <label>Event Name</label>
+    <input type="text" id="evName" placeholder="e.g. Sunday Service, Jundo, Praise &amp; Prayer">
+    <label>Color</label>
+    <div class="swatches" id="evSwatches"></div>
+    <label>Occurs on</label>
+    <div class="dow-grid" id="evDows"></div>
+    <div class="sec-hd">Roles needed for this event</div>
+    <p style="font-size:11px;color:var(--tx3);margin-bottom:8px;">
+      Click a role to add it. Click it again (or ✕) to remove. Adjust slot count inline.
+    </p>
+    <div class="rlib" id="evRoleLib"><span class="rlib-hint">Loading roles…</span></div>
+    <div id="evRolesList"></div>
+    <div class="mac">
+      <button class="btn sm dan" id="evDelBtn" style="display:none;" onclick="deleteEvt()">Delete Event</button>
+      <button class="btn sm" onclick="closeMo('moEvt')">Cancel</button>
+      <button class="btn sm pri" onclick="saveEvt()">Save Event</button>
+    </div>
+  </div>
+</div>
+
+<!-- DAY EVENT MODAL -->
+<div class="mo" id="moDayEvt" style="display:none;" onclick="if(event.target===this)closeMo('moDayEvt')">
+  <div class="mb" style="max-width:500px;">
+    <h3 id="moDayEvtTitle">Add Event to Day</h3>
+    <div class="msub" id="moDayEvtSub"></div>
+    <label>Event Name</label>
+    <input type="text" id="dayEvtName" placeholder="e.g. Special Service, Youth Night…">
+    <label>Color</label>
+    <div class="swatches" id="dayEvtSwatches"></div>
+    <div class="sec-hd">Roles needed for this event</div>
+    <p style="font-size:11px;color:var(--tx3);margin-bottom:8px;">
+      Click a role to add it. Click again (or ✕) to remove. Adjust slot count inline.
+    </p>
+    <div class="rlib" id="dayEvtRoleLib"><span class="rlib-hint">Loading roles…</span></div>
+    <div id="dayEvtRolesList"></div>
+    <div class="mac">
+      <button class="btn sm dan" id="dayEvtDelBtn" style="display:none;" onclick="deleteDayEvt()">Delete Event</button>
+      <button class="btn sm" onclick="closeMo('moDayEvt')">Cancel</button>
+      <button class="btn sm pri" onclick="saveDayEvt()">Save</button>
+    </div>
+  </div>
+</div>

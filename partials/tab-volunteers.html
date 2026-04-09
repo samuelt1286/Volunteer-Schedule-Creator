@@ -1,0 +1,72 @@
+<!-- ═══════════════════════════════════════════════════
+     TAB: Volunteers & Roles
+     ═══════════════════════════════════════════════════ -->
+<div class="panel on" id="panel-volunteers">
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:18px;align-items:start;">
+
+    <!-- ROLES column -->
+    <div>
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:10px;">
+        <h2 style="font-size:17px;">Roles</h2>
+        <button class="btn sm pri" onclick="openRoleModal()">+ Add Role</button>
+      </div>
+      <p style="font-size:11px;color:var(--tx2);margin-bottom:10px;">
+        Roles are shared across all events and volunteers. Create all your roles here first.
+      </p>
+      <div id="roleList"></div>
+    </div>
+
+    <!-- VOLUNTEERS column -->
+    <div>
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:10px;">
+        <h2 style="font-size:17px;">Volunteers</h2>
+        <button class="btn sm pri" onclick="openVolModal()">+ Add Volunteer</button>
+      </div>
+      <div class="stats" id="volStats"></div>
+      <div id="volList"></div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ROLE MODAL -->
+<div class="mo" id="moRole" style="display:none;" onclick="if(event.target===this)closeMo('moRole')">
+  <div class="mb" style="max-width:360px;">
+    <h3 id="moRoleTitle">Add Role</h3>
+    <div class="msub">Roles are shared across all events and volunteers.</div>
+    <label>Role Name</label>
+    <input type="text" id="roleName" placeholder="e.g. OBS, PRE, SET, USHER">
+    <label>Color</label>
+    <select id="roleColor"></select>
+    <div class="mac">
+      <button class="btn sm dan" id="roleDelBtn" style="display:none;" onclick="deleteRole()">Delete</button>
+      <div style="flex:1;"></div>
+      <button class="btn sm" onclick="closeMo('moRole')">Cancel</button>
+      <button class="btn sm pri" onclick="saveRole()">Save Role</button>
+    </div>
+  </div>
+</div>
+
+<!-- VOLUNTEER MODAL -->
+<div class="mo" id="moVol" style="display:none;" onclick="if(event.target===this)closeMo('moVol')">
+  <div class="mb">
+    <h3 id="moVolTitle">Add Volunteer</h3>
+    <div class="msub" id="moVolSub"></div>
+    <label>Name</label>
+    <input type="text" id="volName" placeholder="Name or initials">
+    <label>Primary Role</label>
+    <select id="volPrimRole"></select>
+    <div class="sec-hd">Also available for (optional)</div>
+    <div id="volExtraChips" style="display:flex;flex-wrap:wrap;gap:5px;min-height:22px;margin-bottom:7px;"></div>
+    <div class="row" style="margin-bottom:0;">
+      <select id="volExtraSel"></select>
+      <button class="btn sm" onclick="addVolExtra()" style="flex:0 0 auto;">+ Add</button>
+    </div>
+    <div class="mac">
+      <button class="btn sm dan" id="volDelBtn" style="display:none;" onclick="deleteVol()">Remove</button>
+      <div style="flex:1;"></div>
+      <button class="btn sm" onclick="closeMo('moVol')">Cancel</button>
+      <button class="btn sm pri" onclick="saveVol()">Save</button>
+    </div>
+  </div>
+</div>
